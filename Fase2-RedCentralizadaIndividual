@@ -56,26 +56,27 @@ do
                 Clear-Host  
                'Promocion a Subdominio' 
 
-Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools 
-Import-Module ADDSDeployment
-Install-ADDSDomain `
--NoGlobalCatalog:$false`
--CreateDnsDelegation:$true `
--DatabasePath "C:\Windows\NTDS" `
--DomainMode "Win2012" `
--DomainType "ChildDomain" `
--InstallDns:$true `
--Logpatj "C:\Windows\NTDS" `
--NewDomainName "laplana-san-gva.es" `
--NewDomainNetbiosName "laplana-san" `
--ParentDomainName "master-san-gva" `
--NoRebootOnCompletion:$false `
--SiteName "Default-First-Site-Name" `
--SysvolPath "C:\Windows\SYSVOL" `
--Force:$true
-pause
+ Import-Module ADDSDeployment
+ Install-ADDSDomain `
+ -Credential (Get-Credential) `
+ -NoGlobalCatalog:$false `
+ -CreateDnsDelegation:$true `
+ -Credential (Get-Credential) `
+ -DatabasePath "C:\Windows\NTDS" `
+ -DomainMode "Win2012" `
+ -DomainType "ChildDomain" `
+ -InstallDns:$true `
+ -Logpath "C:\Windows\NTDS" `
+ -NewDomainName "laplana-san-gva.es" `
+ -NewDomainNetbiosName "laplana-san" `
+ -ParentDomainName "-san-gva.es" `
+ -NoRebootOnCompletion:$false `
+ -SiteName "Default-First-Site-Name" `
+ -SysvolPath "C:\Windows\SYSVOL" `
+ -Force:$true
 
 pause
+
            } '2' { 
                 Clear-Host  
                'Despromocion de Subdominio' 
