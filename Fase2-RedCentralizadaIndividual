@@ -98,7 +98,7 @@ Install-ADDSForest `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "Win2012" `
 -DomainName $laplana-san-gva.es `
--DomainNetbiosName $san-gva.es `
+-DomainNetbiosName $laplana-san.es `
 -SafeModeAdministratorPassword (ConvertTo-SecureString -string $adminPass -AsPlainText -Force)`
 -ForestMode "Win2012" `
 -InstallDns:$True `
